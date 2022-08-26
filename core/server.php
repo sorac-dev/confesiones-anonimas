@@ -1,4 +1,25 @@
 <?php
+/*
+* Esta funcion formatea en JSON
+*/
+if (!function_exists('jsonencode')){
+  function jsonencode($array = [], $options = JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT, $header = "Content-type: application/json; charset=utf-8")
+  {
+      header($header);
+      $json = json_encode($array, $options);
+      if ($json === false) {
+          $json = json_encode(["jsonError" => json_last_error_msg()], $options);
+          if ($json === false) {
+              // This should not happen, but we go all the way now:
+              $json = '{"jsonError":"unknown"}';
+          }
+          // Set HTTP response status code to: 500 - Internal Server Error
+          http_response_code(500);
+      }
+      return $json;
+  }
+}
+
 $servername = "localhost";
 $username = "root";
 $password = "";
