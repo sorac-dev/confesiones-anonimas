@@ -22,7 +22,6 @@ PD: Recuerda que el panel administrativo es independiente de la web asi que debe
 
 
 Todos los derechos reservados - Realizado por Sorac
-
-Mi twitch -> https://www.twitch.tv/elsorac_
-Mi canal de youtube -> https://www.youtube.com/c/sorac
-Mi servidor discord -> https://discord.gg/V4gq2p6MfR
+- Mi twitch -> https://www.twitch.tv/elsorac_
+- Mi canal de youtube -> https://www.youtube.com/c/sorac
+- Mi servidor discord -> https://discord.gg/V4gq2p6MfR
