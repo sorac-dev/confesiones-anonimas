@@ -13,7 +13,7 @@ PD: Recuerda que el panel administrativo es independiente de la web asi que debe
 2. Este sitio web es totalmente open-source asi que puedes mejorar y distribuirlo, no tengo problemas con nada solo que respeten los creditos es todo.
 3. El panel administrativo su CSS no es mio, uso boostrap asi que no tomo todo el credito pero si de las funciones y el resto de cosas.
 
-#Cosas por hacer
+**Cosas por hacer**
 - Al momento de publicar una confesion, cada confesion genera una id aleatoria que es con la que se va identificar para hacer futuras funciones, pero falta que esa id verifique que no este ya registrada asi que no olviden hacer esa validacion.
 - La web es casi completamente responsive, solo les toca acomodar un poco el navbar por que se pone algo loco, pero eso se arregla facilmente.
 - Hacer validacion la cual solo pueda hacer una publicacion cada X tiempo para evitar mega spam.
