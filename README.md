@@ -4,7 +4,7 @@
 
 - Entras a la carpeta 'core'
 - Abres el archivo 'server.php'
-- Allí vas a ingreasar los datos MySQL de tu servidor
+- Allí vas a ingresar los datos MySQL de tu servidor
 
 ***PD: Recuerda que el panel administrativo es independiente de la web asi que deberas hacer conexión del panel a la base de datos, es el mismo proceso.***
 
