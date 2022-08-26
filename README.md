@@ -6,7 +6,7 @@
 - Abres el archivo 'server.php'
 - Allí vas a ingreasar los datos MySQL de tu servidor
 
-PD: Recuerda que el panel administrativo es independiente de la web asi que deberas hacer conexión del panel a la base de datos, es el mismo proceso.
+***PD: Recuerda que el panel administrativo es independiente de la web asi que deberas hacer conexión del panel a la base de datos, es el mismo proceso.***
 
 **Advertencias y notas**
 1. Recuerda que esto es un proyecto realizado desde cero, tambien deberas tener en cuenta que soy un aprendiz asi que puede tener vulnerabilidades el sitio web donde puedan hacerte SQL Inject, asi que revisa antes de hacer publico el sitio, trate de hacer todas las validaciones posibles (no son las mejores validaciones pero cumplen su función).
