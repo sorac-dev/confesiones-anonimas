@@ -24,6 +24,8 @@
 - Hacer el ajax/javascript/jquery de scroll infinito en las publicaciones ya que actualmente carga todo lo de la base de datos. (Si lo hacen les agradeceria que me manden actualizado para asi subirlo).
 - Configurar bien el archivo .htaccess
 
+**ARREGLOS**
+- Se arreglo el modo mantenimiento, ahora funciona como es debido con sus mensajes personalizados.
 
 Todos los derechos reservados - Realizado por Sorac
 - Mi instagram -> https://www.instagram.com/soycarlos.co/
