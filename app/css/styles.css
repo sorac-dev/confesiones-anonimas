@@ -132,6 +132,13 @@ body {
     background-color: #fcf8e3;
     border-color: #faebcc;
 }
+.red {
+    color: red;
+}
+.a-red {
+    color: #0c0101;
+    background-color: #fcdbd8;
+}
 .conf-head-male {
     background: #088ecc;
     color: #003452;

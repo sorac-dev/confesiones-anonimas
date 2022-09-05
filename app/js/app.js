@@ -129,7 +129,7 @@ const getMoreData = (desde = 0, total = 10) => {
             }
           );
         } else if (response.code === 404) {
-          $no_more_results.html(`<p class="alert alert-warning">${response.message}</p>`);
+          $no_more_results.html(`<p class="alert alert-warning a-red"><b class="red">!</b> ${response.message}</p>`);
         }
       });
   })();
