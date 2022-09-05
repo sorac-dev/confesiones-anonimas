@@ -19,13 +19,14 @@
 
 **Cosas por hacer**
 - Al momento de publicar una confesion, cada confesion genera una id aleatoria que es con la que se va identificar para hacer futuras funciones, pero falta que esa id verifique que no este ya registrada asi que no olviden hacer esa validacion.
-- La web es casi completamente responsive, solo les toca acomodar un poco el navbar por que se pone algo loco, pero eso se arregla facilmente.
 - Hacer validacion la cual solo pueda hacer una publicacion cada X tiempo para evitar mega spam.
 - Configurar bien el archivo .htaccess
+- Falta crear las consultas de cambios de contraseña en el panel administrativo.
 
 **ARREGLOS**
 - Se arreglo el modo mantenimiento, ahora funciona como es debido con sus mensajes personalizados.
 - Se agrego scroll infinito a las confesiones (By Kreisler)
+- Navbar arreglado
 
 Todos los derechos reservados - Realizado por Sorac
 - Mi instagram -> https://www.instagram.com/soycarlos.co/

@@ -2,6 +2,7 @@
 require('../core/server.php');
 ?>
 <?php
+session_start();
 if ((isset($_POST['edad'])) && (isset($_POST['genero']))  && (isset($_POST['confesion']))) {
     $age   = ( empty($_POST['edad']) )   ? NULL : $_POST['edad']; //Validar que no este vacio
     $conf   = ( empty($_POST['confesion']) )   ? NULL : $_POST['confesion']; //Validar que no  este vacio
@@ -39,7 +40,16 @@ exit();
     header("Location: ../index?confesiones-desabilitadas");
 ?>
 <?php    
-exit(); } else {
+exit(); 
+} else {
+    $durFormBloqueado = 3;
+    if(isset($_SESSION['duracionFormBloqueado']) && $_SESSION['duracionFormBloqueado'] + $durFormBloqueado > time())
+    {
+    echo "Tienes que esperar " . $durFormBloqueado . " segundos(s) para enviar otro formulario.";
+    ?>
+    <?php
+    exit;
+    } else {
     #Enviar confesion
     $send = "INSERT INTO conf_respuestas (id_conf, edad, genero, confesion, date_conf, time_conf, pais, ip_user) values ('" . strip_tags($rand_result) . "','" . strip_tags($age) . "','" . strip_tags($_POST['genero']) . "','" . $confe . "','" . strip_tags($fecha_log) . "', '" . strip_tags($time_log) . "','" . strip_tags($pais) . "','" . strip_tags($ip) . "')";
     $conn->query($send);
@@ -51,6 +61,7 @@ exit(); } else {
     #Enviar a log moderacion
     $enviar_log = "INSERT INTO logs_conf (id_conf,accion,ip_user,fecha) values ('{$rand_result}','{$accion}','{$ip}','{$fecha_c}')";
     $conn->query($enviar_log);
+    $_SESSION['duracionFormBloqueado'] = time(); // Se guarda la fecha en sesion
     header("Location: ../");
 ?>
-<?php }} ?>
+<?php }}} ?>

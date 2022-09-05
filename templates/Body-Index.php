@@ -3,6 +3,32 @@
     include('./templates/funciones/formulario-conf.php');
     ?>
 </div>
+<?php
+
+$errorID = $_SESSION['errorID'];
+
+if ($errorID == 1) {
+    $tipoError = 'Algo ocurrió al intentar enviar tu confesion, por favor intenta nuevamente.';
+    
+}
+if ($errorID == 2) {
+    $tipoError = 'Confesiones desabilitadas en este momento, intenta mas tarde.';
+}
+if ($errorID == 3) {
+    $tipoError = 'Vas muy rapido, espera 3 segundo(s) para enviar otra confesion.';
+}
+
+if ($_SESSION['TengoError'] != true) {
+    echo '';
+} else {
+?>
+<div class="t-m1 alert-box">
+    <p class="alert alert-warning a-red"> <b class="red">!</b> <?=$tipoError?> </p>
+</div>
+<?php } 
+#Desabilitar error cuando carguen web.
+$_SESSION['TengoError'] = false; ?>
+
 <div class="t-m1 alert-box">
     <p class="alert alert-warning">Estás viendo confesiones de <strong>personas de todo el mundo </strong> 🌎</p>
 </div>
