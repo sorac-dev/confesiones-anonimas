@@ -19,7 +19,6 @@
 
 **Cosas por hacer**
 - Al momento de publicar una confesion, cada confesion genera una id aleatoria que es con la que se va identificar para hacer futuras funciones, pero falta que esa id verifique que no este ya registrada asi que no olviden hacer esa validacion.
-- Hacer validacion la cual solo pueda hacer una publicacion cada X tiempo para evitar mega spam.
 - Configurar bien el archivo .htaccess
 - Falta crear las consultas de cambios de contraseña en el panel administrativo.
 
@@ -27,6 +26,8 @@
 - Se arreglo el modo mantenimiento, ahora funciona como es debido con sus mensajes personalizados.
 - Se agrego scroll infinito a las confesiones (By Kreisler)
 - Navbar arreglado
+- Se agrego validacion en publicar confesiones para evitar flood masivo de envio de confesiones, solo una confesion cada 3 segundos.
+- Se modifico el formulario de publicacion de confesiones.
 
 Todos los derechos reservados - Realizado por Sorac
 - Mi instagram -> https://www.instagram.com/soycarlos.co/

@@ -47,4 +47,4 @@ if (isset($_GET[$desteStr]) && isset($_GET[$totalStr])) {
     }
 }
 
-echo jsonencode(array_key_exists('data', $data) && count($data['data']) == 0 ? ['code' => 404, 'message' => 'No se encontraron confesiones.'] : $data);
+echo jsonencode(array_key_exists('data', $data) && count($data['data']) == 0 ? ['code' => 404, 'message' => 'No se encontraron mas confesiones.'] : $data);
