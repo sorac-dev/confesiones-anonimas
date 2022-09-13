@@ -24,7 +24,7 @@ session_start();
 </div>
 <?php
 if ((isset($_POST['edad'])) && (isset($_POST['genero']))  && (isset($_POST['confesion']))) {
-    $age_validar   = ( empty($_POST['edad']) )   ? NULL : $_POST['edad']; //Validar que no este vacio
+    $age   = ( empty($_POST['edad']) )   ? NULL : $_POST['edad']; //Validar que no este vacio
     $conf   = ( empty($_POST['confesion']) )   ? NULL : $_POST['confesion']; //Validar que no  este vacio
 
     //Generar id aleatoria
@@ -33,13 +33,8 @@ if ((isset($_POST['edad'])) && (isset($_POST['genero']))  && (isset($_POST['conf
     $rand_result = $rand_n1 + $rand_n2 * 2;
 
     #Volver caracteres especiales
-    $conf_f3 = strip_tags($conf);
-    $confe_f2 = htmlentities($con_f3);
-    $conf_f = html_entity_decode($confe_f2);
-    $confe = filter_var($confe_f, FILTER_SANITIZE_STRING);
-
-    #Validar edad
-    $age = filter_var($age_validar, FILTER_SANITIZE_NUMBER_INT);
+    $conf2 = strip_tags($conf);
+    $confe = htmlspecialchars($conf2);
 
     //Fecha log
     $fecha_log = date('d-M-Y', time());
@@ -49,10 +44,7 @@ if ((isset($_POST['edad'])) && (isset($_POST['genero']))  && (isset($_POST['conf
     $pais = $_SERVER["HTTP_CF_IPCOUNTRY"];
     $ip = $_SERVER["HTTP_CF_CONNECTING_IP"];
 
-    #Validaciones de texto del genero
-    $genero_v2 = strip_tags($_POST['genero']);
-    $genero_v = htmlentities($genero_v2);
-    $genero = filter_var($genero_v, FILTER_SANITIZE_NUMBER_INT);
+    $genero = $_POST['genero'];
 
     #Verificamos que este activo confesiones
     $cons = $conn->query("SELECT * FROM config WHERE id='1'");

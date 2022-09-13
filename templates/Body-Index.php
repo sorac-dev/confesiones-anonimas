@@ -46,10 +46,6 @@ $_SESSION['TengoError'] = false; ?>
         </svg>
     </div>
 </div>
-<div class="container" data-result="confesiones">
-    <?php //include('./templates/funciones/conf.php');
-    ?>
-</div>
 <div class="container" data-result="no-more-results">
 
 </div>

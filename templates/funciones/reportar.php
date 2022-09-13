@@ -15,8 +15,8 @@ if (isset($_POST['id_post'])) {
     $id_actual = $id_conf;
     $ip_denunciado = $row['ip_user'];
 
-    #$ip_actual = $_SERVER["HTTP_CF_CONNECTING_IP"];
-    $ip_actual = $_SERVER['REMOTE_ADDR'];
+    $ip_actual = $_SERVER["HTTP_CF_CONNECTING_IP"];
+    #$ip_actual = $_SERVER['REMOTE_ADDR'];
     $fecha_all = date("Y-m-d", time());
 
     #Hacemos consulta

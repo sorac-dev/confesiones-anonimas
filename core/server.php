@@ -38,7 +38,8 @@ try {
 date_default_timezone_set("America/Bogota");
 
 $ip_baneada = '';
-$ip_actual = $_SERVER["REMOTE_ADDR"];
+#$ip_actual = $_SERVER["HTTP_CF_CONNECTING_IP"]; //Si ya esta para el servidor poner este.
+$ip_actual = $_SERVER["REMOTE_ADDR"]; //Si estas en entorno localhost, poner este.
 
 #Consultamos los baneos por ip
 $resultado = $conn->query("SELECT * FROM baneos WHERE ip_ban = '$ip_actual'");
