@@ -18,7 +18,6 @@
 3. El panel administrativo su CSS no es mio, uso boostrap asi que no tomo todo el credito pero si de las funciones y el resto de cosas.
 
 **Cosas por hacer**
-- Al momento de publicar una confesion, cada confesion genera una id aleatoria que es con la que se va identificar para hacer futuras funciones, pero falta que esa id verifique que no este ya registrada asi que no olviden hacer esa validacion.
 - Configurar bien el archivo .htaccess
 - Falta crear las consultas de cambios de contraseña en el panel administrativo.
 
@@ -28,6 +27,9 @@
 - Navbar arreglado
 - Se agrego validacion en publicar confesiones para evitar flood masivo de envio de confesiones, solo una confesion cada 3 segundos.
 - Se modifico el formulario de publicacion de confesiones.
+- Se agrego validacion de genero
+- Se mejoro validaciones de las confesiones
+- Ahora la "id_conf" sera id unica
 
 Todos los derechos reservados - Realizado por Sorac
 - Mi instagram -> https://www.instagram.com/soycarlos.co/
