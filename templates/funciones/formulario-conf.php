@@ -27,10 +27,14 @@ if ((isset($_POST['edad'])) && (isset($_POST['genero']))  && (isset($_POST['conf
     $age_validar   = ( empty($_POST['edad']) )   ? NULL : $_POST['edad']; //Validar que no este vacio
     $conf   = ( empty($_POST['confesion']) )   ? NULL : $_POST['confesion']; //Validar que no  este vacio
 
-    //Generar id aleatoria
-    $rand_n1 = rand(1,9999);
-    $rand_n2 = rand(99,9999);
-    $rand_result = $rand_n1 + $rand_n2 * 2;
+    $cargar = $conn->query("SELECT * FROM conf_respuestas");
+    $dConf2 = $conn->fetch();
+
+    $n_rand = rand();
+    if ($n_rand == $dConf2['id_conf']) {
+        $n_rand2 = rand();
+        $rand_result = $n_rand2;
+    }
 
     #Volver caracteres especiales
     $conf_f3 = strip_tags($conf);
