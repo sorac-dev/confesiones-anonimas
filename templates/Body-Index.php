@@ -1,10 +1,26 @@
+<?php
+    require('core/server.php');
+?>
+<?php
+#Vamos a ver si estan activas las confesiones.
+    $query = $conn->query('SELECT * FROM config WHERE id = 1');
+    $queryConfig = $query->fetch();
+    if ($queryConfig['confesiones']  == 1) {
+        echo '';
+    } else {
+        echo '
+        <div class="t-m1 alert-box">
+            <p class="alert alert-warning a-red"> <b class="red">!</b> Actualmente las confesiones estan <b>desabilitadas</b>. </p>
+        </div>
+        ';
+    }
+?>
 <div class="container">
     <?php
     include('./templates/funciones/formulario-conf.php');
     ?>
 </div>
 <?php
-
 $errorID = $_SESSION['errorID'];
 
 if ($errorID == 1) {
@@ -27,7 +43,9 @@ if ($_SESSION['TengoError'] != true) {
 </div>
 <?php } 
 #Desabilitar error cuando carguen web.
-$_SESSION['TengoError'] = false; ?>
+$_SESSION['TengoError'] = false; 
+$_SESSION['errorID'] = 0; 
+?>
 
 <div class="t-m1 alert-box">
     <p class="alert alert-warning">Estás viendo confesiones de <strong>personas de todo el mundo </strong> 🌎</p>
@@ -45,6 +63,9 @@ $_SESSION['TengoError'] = false; ?>
             </path>
         </svg>
     </div>
+</div>
+<div class="container" data-result="confesiones">
+    
 </div>
 <div class="container" data-result="no-more-results">
 

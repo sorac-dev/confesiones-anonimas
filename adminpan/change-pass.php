@@ -41,11 +41,60 @@ if (isset($_SESSION['logeado']) != "SI") {
             </form>
          </div>
       </div>
-   </div>
-</div>
 <?php
 }
 ?>
+<?php
+if (isset($_POST['username']) && isset($_POST['new-pass'])) {
+
+   #Datos necesarios
+   $usuario = htmlentities($_POST['username']);
+   $new_pass = htmlentities($_POST['new-pass']);
+
+   #Consultamos todos los datos a la tabla de equipo.
+   $query = $conn->query("SELECT * FROM equipo WHERE username = '".$usuario."'");
+   $dataQuery = $query->fetch();
+   $id_usuario = $dataQuery[0] ?? false;
+
+   if (!$id_usuario) {
+      echo '<hr>
+      <div class="col-sm-12 col-xl-6">
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+         <i class="fa fa-exclamation-circle me-2"></i> El usuario ingresado no existe.
+         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" onClick="window.location.href=change-pass"></button>
+      </div>
+      </div>';
+   } else {
+    #Ciframos contraseña
+    $cifrado1 = sha1($new_pass);
+    $pass_cifrada = md5($cifrado1);
+
+    #Enviar el cambio de contraseña
+    $queryChange = "UPDATE equipo SET password = '$pass_cifrada' WHERE id = '$id_usuario'";
+    $conn->query($queryChange);
+
+    echo '<hr>
+    <div class="col-sm-12 col-xl-6">
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+       <i class="fa fa-exclamation-circle me-2"></i> Hiciste el cambio de contraseña correctamente!
+       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    </div>
+    ';
+
+    #Log
+    $fecha_log = date("Y-m-d h:i:s", time());
+    $username2 = $_SESSION['username'];
+    $ip = $_SERVER["HTTP_CF_CONNECTING_IP"];
+    $pais = $_SERVER["HTTP_CF_IPCOUNTRY"];
+    $accion = "cambio la contraseña de $usuario";
+    $enviar_log = "INSERT INTO logs_moderacion (ip_mod,pais,usuario,accion,fecha) values ('".$ip."','".$pais."','".$username2."','".$accion."','".$fecha_log."')";
+    $conn->query($enviar_log);
+   }
+}
+?>
+   </div>
+</div>
 <?php
 include('templates/footer.php');
 ?>

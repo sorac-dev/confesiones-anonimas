@@ -19,7 +19,6 @@
 
 **Cosas por hacer**
 - Configurar bien el archivo .htaccess
-- Falta crear las consultas de cambios de contraseña en el panel administrativo.
 
 **ARREGLOS**
 - Se arreglo el modo mantenimiento, ahora funciona como es debido con sus mensajes personalizados.
@@ -30,8 +29,9 @@
 - Se agrego validacion de genero
 - Se mejoro validaciones de las confesiones
 - Ahora la "id_conf" sera id unica
+- Se creo sistema para cambiar contraseñas en el panel administrativo.
 
-Todos los derechos reservados - Realizado por Sorac
+**Todos los derechos reservados - Realizado por Sorac**
 - Mi instagram -> https://www.instagram.com/soycarlos.co/
 - Mi tiktok -> https://tiktok.com/@soycarlos.co
 - Mi canal de twitch -> https://www.twitch.tv/elsorac_

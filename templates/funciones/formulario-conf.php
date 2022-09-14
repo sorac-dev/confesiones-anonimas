@@ -28,7 +28,7 @@ if ((isset($_POST['edad'])) && (isset($_POST['genero']))  && (isset($_POST['conf
     $conf   = ( empty($_POST['confesion']) )   ? NULL : $_POST['confesion']; //Validar que no  este vacio
 
     $cargar = $conn->query("SELECT * FROM conf_respuestas");
-    $dConf2 = $conn->fetch();
+    $dConf2 = $cargar->fetch();
 
     $n_rand = rand();
     if ($n_rand == $dConf2['id_conf']) {
@@ -38,12 +38,11 @@ if ((isset($_POST['edad'])) && (isset($_POST['genero']))  && (isset($_POST['conf
 
     #Volver caracteres especiales
     $conf_f3 = strip_tags($conf);
-    $confe_f2 = htmlentities($con_f3);
-    $conf_f = html_entity_decode($confe_f2);
-    $confe = filter_var($confe_f, FILTER_SANITIZE_STRING);
+    $confe_f2 = htmlspecialchars($conf_f3);
+    $confe = html_entity_decode($confe_f2);
 
     #Validar edad
-    $age = filter_var($age_validar, FILTER_SANITIZE_NUMBER_INT);
+    $age = strip_tags($age_validar);
 
     //Fecha log
     $fecha_log = date('d-M-Y', time());
@@ -55,8 +54,7 @@ if ((isset($_POST['edad'])) && (isset($_POST['genero']))  && (isset($_POST['conf
 
     #Validaciones de texto del genero
     $genero_v2 = strip_tags($_POST['genero']);
-    $genero_v = htmlentities($genero_v2);
-    $genero = filter_var($genero_v, FILTER_SANITIZE_NUMBER_INT);
+    $genero = htmlentities($genero_v2);
 
     #Verificamos que este activo confesiones
     $cons = $conn->query("SELECT * FROM config WHERE id='1'");
@@ -91,7 +89,7 @@ exit();
     exit();
     } else {
     #Enviar confesion
-    $send = "INSERT INTO conf_respuestas (id_conf, edad, genero, confesion, date_conf, time_conf, pais, ip_user) values ('" . strip_tags($rand_result) . "','" . strip_tags($age) . "','" . strip_tags($_POST['genero']) . "','" . $confe . "','" . strip_tags($fecha_log) . "', '" . strip_tags($time_log) . "','" . strip_tags($pais) . "','" . strip_tags($ip) . "')";
+    $send = "INSERT INTO conf_respuestas (id_conf, edad, genero, confesion, date_conf, time_conf, pais, ip_user) values ('" . strip_tags($rand_result) . "','" . strip_tags($age) . "','" . strip_tags($genero) . "','" . $confe . "','" . strip_tags($fecha_log) . "', '" . strip_tags($time_log) . "','" . strip_tags($pais) . "','" . strip_tags($ip) . "')";
     $conn->query($send);
 
     #Datos
