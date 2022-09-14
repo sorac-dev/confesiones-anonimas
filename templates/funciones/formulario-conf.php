@@ -31,10 +31,6 @@ if ((isset($_POST['edad'])) && (isset($_POST['genero']))  && (isset($_POST['conf
     $dConf2 = $cargar->fetch();
 
     $n_rand = rand();
-    if ($n_rand == $dConf2['id_conf']) {
-        $n_rand2 = rand();
-        $rand_result = $n_rand2;
-    }
 
     #Volver caracteres especiales
     $conf_f3 = strip_tags($conf);
@@ -89,7 +85,7 @@ exit();
     exit();
     } else {
     #Enviar confesion
-    $send = "INSERT INTO conf_respuestas (id_conf, edad, genero, confesion, date_conf, time_conf, pais, ip_user) values ('" . strip_tags($rand_result) . "','" . strip_tags($age) . "','" . strip_tags($genero) . "','" . $confe . "','" . strip_tags($fecha_log) . "', '" . strip_tags($time_log) . "','" . strip_tags($pais) . "','" . strip_tags($ip) . "')";
+    $send = "INSERT INTO conf_respuestas (id_conf, edad, genero, confesion, date_conf, time_conf, pais, ip_user) values ('" . strip_tags($n_rand) . "','" . strip_tags($age) . "','" . strip_tags($genero) . "','" . $confe . "','" . strip_tags($fecha_log) . "', '" . strip_tags($time_log) . "','" . strip_tags($pais) . "','" . strip_tags($ip) . "')";
     $conn->query($send);
 
     #Datos
@@ -97,7 +93,7 @@ exit();
     $fecha_c = date("Y-m-d h:i:s", time());
     
     #Enviar a log moderacion
-    $enviar_log = "INSERT INTO logs_conf (id_conf,accion,ip_user,fecha) values ('{$rand_result}','{$accion}','{$ip}','{$fecha_c}')";
+    $enviar_log = "INSERT INTO logs_conf (id_conf,accion,ip_user,fecha) values ('{$n_rand}','{$accion}','{$ip}','{$fecha_c}')";
     $conn->query($enviar_log);
     $_SESSION['duracionFormBloqueado'] = time(); // Se guarda la fecha en sesion
     $_SESSION['TengoError'] = false;
