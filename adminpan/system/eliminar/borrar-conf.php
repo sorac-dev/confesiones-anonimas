@@ -25,8 +25,8 @@ if (isset ($_GET['id'])){
 	
     $id = $_GET['id'];
     
-    $consulta = "DELETE FROM conf_respuestas WHERE id='$id' LIMIT 1";
-    
+    $msg_remove = "<<< Estaa confesión ha sido eliminada. >>>";
+    $consulta = "UPDATE conf_respuestas SET confesion = '$msg_remove' WHERE id = $id";
     $conn->query($consulta);
         
     // Guardar acción en Logs si se ha iniciado sesión
