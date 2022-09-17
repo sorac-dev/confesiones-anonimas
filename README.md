@@ -19,6 +19,7 @@
 
 **Cosas por hacer**
 - Configurar bien el archivo .htaccess
+- Hacer sistema reporte de comentario
 
 **ARREGLOS**
 - Se arreglo el modo mantenimiento, ahora funciona como es debido con sus mensajes personalizados.
@@ -30,6 +31,7 @@
 - Se mejoro validaciones de las confesiones
 - Ahora la "id_conf" sera id unica
 - Se creo sistema para cambiar contraseñas en el panel administrativo.
+- Sistema de comentarios
 
 **Todos los derechos reservados - Realizado por Sorac**
 - Mi instagram -> https://www.instagram.com/soycarlos.co/
