@@ -1,6 +1,5 @@
 <?php
 require('./core/server.php');
-session_start();
 ?>
 <div class="form-conf" id="escribir" style="display: none;">
     <form action="" method="post" enctype="multipart/form-data">
@@ -30,7 +29,9 @@ if ((isset($_POST['edad'])) && (isset($_POST['genero']))  && (isset($_POST['conf
     $cargar = $conn->query("SELECT * FROM conf_respuestas");
     $dConf2 = $cargar->fetch();
 
-    $n_rand = rand();
+    $segundos = date('i', time());
+    $numero_aleatorio = rand(10000000,99999999);
+    $n_rand = $numero_aleatorio + $segundos;
 
     #Volver caracteres especiales
     $conf_f3 = strip_tags($conf);
@@ -61,7 +62,7 @@ if (!$age || !$conf || $age >= '100' || $age <= '2' || $genero >= '5' || $genero
 
     $_SESSION['TengoError'] = true;
     $_SESSION['errorID'] = 1;
-    header("Location: ../index");
+    header("Location: ../");
 ?>
 <?php 
 exit();
@@ -69,7 +70,7 @@ exit();
 
     $_SESSION['TengoError'] = true;
     $_SESSION['errorID'] = 2;
-    header("Location: ../index");
+    header("Location: ../");
 ?>
 <?php    
 exit(); 
@@ -79,11 +80,14 @@ exit();
     {
     $_SESSION['TengoError'] = true;
     $_SESSION['errorID'] = 3;
-    header("Location: ../index");
+    header("Location: ../");
     ?>
     <?php
     exit();
     } else {
+    if (empty($pais)) {
+        $pais = 'desconocido';
+    }
     #Enviar confesion
     $send = "INSERT INTO conf_respuestas (id_conf, edad, genero, confesion, date_conf, time_conf, pais, ip_user) values ('" . strip_tags($n_rand) . "','" . strip_tags($age) . "','" . strip_tags($genero) . "','" . $confe . "','" . strip_tags($fecha_log) . "', '" . strip_tags($time_log) . "','" . strip_tags($pais) . "','" . strip_tags($ip) . "')";
     $conn->query($send);
@@ -97,6 +101,6 @@ exit();
     $conn->query($enviar_log);
     $_SESSION['duracionFormBloqueado'] = time(); // Se guarda la fecha en sesion
     $_SESSION['TengoError'] = false;
-    header("Location: ../index");
+    header("Location: ../");
 ?>
 <?php }}} ?>

@@ -42,7 +42,7 @@ if (isset($_GET[$desteStr]) && isset($_GET[$totalStr])) {
             "date_conf" => $row['date_conf'],
             "time_conf" => $row['time_conf'],
             "pais" => $row['pais'],
-            "ip_user" => $row['ip_user']
+            "ip_user" => $row['ip_user'],
         ]);
     }
 }

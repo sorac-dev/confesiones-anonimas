@@ -25,7 +25,7 @@ if (isset ($_GET['id'])){
 	
     $id = $_GET['id'];
     
-    $msg_remove = "<<< Estaa confesión ha sido eliminada. >>>";
+    $msg_remove = "«Este mensaje ha sido reportado por la comunidad»";
     $consulta = "UPDATE conf_respuestas SET confesion = '$msg_remove' WHERE id = $id";
     $conn->query($consulta);
         

@@ -15,8 +15,8 @@ if (isset($_POST['id_post'])) {
     $id_actual = $id_conf;
     $ip_denunciado = $row['ip_user'];
 
-    $ip_actual = $_SERVER["HTTP_CF_CONNECTING_IP"];
-    #$ip_actual = $_SERVER['REMOTE_ADDR'];
+    #$ip_actual = $_SERVER["HTTP_CF_CONNECTING_IP"];
+    $ip_actual = $_SERVER['REMOTE_ADDR'];
     $fecha_all = date("Y-m-d", time());
 
     #Hacemos consulta
@@ -44,12 +44,9 @@ exit();
     } else {
         #Insertamos la denuncia
         $enviar = $conn->query("INSERT INTO reportes (id_conf, ip_denunciante, ip_denunciado,fecha) VALUES ('{$id_actual}','{$ip_actual}', '{$ip_denunciado}', '{$fecha_all}')");
-
         #Guardado logs
         $accion = "Se hizo una denuncia con la ip <b>$ip_actual</b> a la confesion id <b>$id_actual</b>";
         $enviar_log = "INSERT INTO logs_reportes (ip_denunciante,accion,fecha) values ('{$ip_actual}','{$accion}','{$fecha_all}')";
         $conn->query($enviar_log);
-        header("Location: ../../index");
     ?>
 <?php }}?>
-<script>location.href="../../index";</script>

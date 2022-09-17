@@ -53,11 +53,9 @@ body {
     border-radius: 5px;
     height: auto;
     min-height: 25px;
-    width: 100%;
     max-width: 150px;
-    min-width: 100PX;
     border: 1px solid #8E8E8E;
-    padding: 5px 10px;
+    padding: 6px 12px;
     font-size: 15px;
     font-weight: bold;
 }
@@ -86,7 +84,6 @@ body {
     margin-left: auto !important;
     margin-right: auto !important;
 }
-
 .div-confesion-female {
     display: block;
     width: auto;
@@ -131,6 +128,11 @@ body {
     color: #8a6d3b;
     background-color: #fcf8e3;
     border-color: #faebcc;
+}
+.alert-info {
+    color: #2E3E5D;
+    background-color: #B2CBFF;
+    border-color: #538BF8;
 }
 .red {
     color: red;
@@ -737,7 +739,7 @@ table {
   }
   
   .logo {
-    font-size: 30px;
+    font-size: 20px;
     font-weight: bold;
     padding: 0 40px;
     line-height: 50px;
@@ -791,7 +793,7 @@ table {
     }
   
     .logo {
-      font-size: 25px;
+      font-size: 20px;
       padding: 0 20px;
       line-height: 60px;
     }
@@ -835,3 +837,214 @@ table {
       outline: none;
     }
   }
+  .confesion-id {
+    opacity: .7;
+    filter: alpha(opacity=70);
+    font-size: .9em;
+    font-weight: 700;
+    position: relative;
+    left: 30%;
+    right: 30%;
+    text-decoration: none;
+}
+.conf-head-user-secret a {
+    color: #555;
+}
+.conf-head-user-secret a:hover {
+    color: rgb(112, 112, 112);
+}
+.conf-head-male a {
+    color: #003452;
+}
+.conf-head-male a:hover {
+    color: #013f63;
+}
+.conf-head-female a {
+    color: #5c568d;
+}
+.conf-head-female a:hover {
+    color: #68619c;
+}
+.com-head {
+    opacity: .6;
+    font-size: .9em;
+}
+.com-head b {
+    opacity: .8;
+}
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+  }
+.com-head {
+    text-align: center;
+    padding: 5px;
+    width: auto;
+    height: 100%;
+    background-color: #e4e4e4;
+}
+.cont-com{
+    border-radius: 0 12px 12px 12px;
+    border: 1px solid rgba(51, 51, 51, 0.089);
+    background-color: #ececec;
+    padding: 8px;
+    width: 100%;
+}
+.cont-com p {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.com-avatar {
+    padding-top: 3px;
+    padding-right: 10px;
+    height: 64px;
+    width: 64px;
+}
+.bg-com {
+    max-width: 90%;
+    display: flex;
+    word-break: break-word;
+    padding: 12px;
+}
+.com-footer {
+    border-radius: 12px;
+    background-color: #cfcfcf;
+    opacity: .7;
+    width: auto;
+    padding: 7px
+}
+.com-footer span {
+    margin-left: 7px;
+}
+.com-footer img {
+    width: auto;
+    max-width: 16px;
+    max-height: 14px;
+    height: auto;
+}
+.bg-body-anonimo {
+    background-color: #F4F4F4;
+    height: 100%;
+    border-top: 22px solid #c5c5c5;
+    border-left: 5px solid #d6d6d6;
+    border-right: 2px solid #D9DBDF;
+    border-radius: 12px 12px 0 0;
+}
+.bg-body-hombre {
+    background-color: #F4F4F4;
+    height: 100%;
+    border-top: 22px solid #0769e9;
+    border-left: 5px solid #0a5dc9;
+    border-right: 2px solid #D9DBDF;
+    border-radius: 12px 12px 0 0;
+}
+.bg-body-mujer {
+    background-color: #F4F4F4;
+    height: 100%;
+    border-top: 22px solid #beb5ff;
+    border-left: 5px solid #ada6e7;
+    border-right: 2px solid #D9DBDF;
+    border-radius: 12px 12px 0 0;
+}
+.comentario {
+    position: relative;
+    text-decoration: none;
+    color: #000;
+    opacity: .5;
+    top: -18px;
+    text-align: center;
+}
+.comentario:hover {
+    color: #000;
+    opacity: .9;
+}
+.btn-reportar {
+    cursor: pointer;
+    position: relative;
+    text-decoration: none;
+    color: #000;
+    opacity: .5;
+    top: -18px;
+    text-align: center;
+    border: none;
+    background-color: transparent;
+}
+.btn-reportar:hover {
+    color: #000;
+    opacity: .9;
+}
+.btn-reportar-com {
+    cursor: pointer;
+    position: relative;
+    text-decoration: none;
+    color: #000;
+    opacity: .5;
+    left: 8px;
+    top: -2px;
+    text-align: center;
+    border: none;
+    background-color: transparent;
+}
+.btn-reportar-com:hover {
+    color: #000;
+    opacity: .9;
+}
+/* LOADING */
+.loader-container {
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+    overflow: hidden
+}
+
+.loader,.loader:after,.loader:before {
+    background: #0060d2;
+    animation: load1 .9s infinite ease-in-out;
+    width: 1.3em;
+    height: 4em
+}
+
+.loader {
+    color: #0060d2;
+    text-indent: -9999em;
+    margin: 28px auto;
+    position: relative;
+    font-size: 11px;
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    animation-delay: -.15s
+}
+
+.loader:after,.loader:before {
+    position: absolute;
+    top: 0;
+    content: ""
+}
+
+.loader:before {
+    left: -1.4em;
+    animation-delay: -.3s
+}
+
+.loader:after {
+    left: 1.4em
+}
+
+@keyframes load1 {
+    0%,80%,to {
+        box-shadow: 0 0;
+        height: 4em
+    }
+
+    40% {
+        box-shadow: 0 -2em;
+        height: 6em
+    }
+}

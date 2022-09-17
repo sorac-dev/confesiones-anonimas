@@ -1,6 +1,6 @@
 <header class="header">
         <nav class="nav">
-          <a href="" class="logo nav-link"><i class="fa fa-hashtag" aria-hidden="true"></i> CONFESIONES</a>
+          <a href="../" class="logo nav-link"><i class="fa fa-hashtag" aria-hidden="true"></i> CONFESIONES</a>
           <ul class="nav-toggle" aria-label="Abrir menú">
             <span style="cursor: pointer;" class="nav-menu-link nav-link nav-menu-link" onclick="escribir.style.display = ''"><i class="fa fa-pencil" aria-hidden="true"></i> Escribir</span>
           </ul>

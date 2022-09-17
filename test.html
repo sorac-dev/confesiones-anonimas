@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" href="./assets/images/favicon.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confesiones</title>
+    <link rel="stylesheet" href="./app/css/styles.css">
+    <script src="./app/js/jquery-3.6.0.min.js"></script> 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css" integrity="sha256-XoaMnoYC5TH6/+ihMEnospgm0J1PM/nioxbOUdnM8HY=" crossorigin="anonymous">
+    
+</head>
+<header class="header">
+  <nav class="nav">
+    <a href="../" class="logo nav-link"><i class="fa fa-hashtag" aria-hidden="true"></i> CONFESIONES</a>
+    <ul class="nav-toggle" aria-label="Abrir menú">
+      <span style="cursor: pointer;" class="nav-menu-link nav-link nav-menu-link" onclick="escribir.style.display = ''"><i class="fa fa-pencil" aria-hidden="true"></i> Escribir</span>
+    </ul>
+    <ul class="nav-menu">
+      <li class="nav-menu-item">
+          <span class="nav-menu-link nav-link nav-menu-link_active" onclick="escribir.style.display = ''" style="cursor: pointer;"><i class="fa fa-pencil" aria-hidden="true"></i> Escribir</span>
+      </li>
+    </ul>
+  </nav>
+</header>
+<br><br><br>
+<body>
+<div class="container-conf" id-confesion="76207620">
+    <div class="div-confesion-user-secret">
+    <div class="conf-head-user-secret">
+            <a class="confesion-id" href="post?id=76207620">@76207620</a>
+            <div class="conf-edad-h aling-left">
+                <i class="fa fa-user-secret" aria-hidden="true"></i><span> <b>13</b> </span>años
+            </div>
+        </div>
+        <div class="conf-meta">
+            <i class="fa fa-history" aria-hidden="true"></i> 04:43 <span class="text-flag aling-right" style="display:none;"><img src="/assets/images/flags/desconocido.svg">desconocido</span>
+        </div>
+        <div class="conf-contenido">
+            hola, yo creo que ya leíste muchos secreto, siéntate y toma una galletita con un café🍪☕ahora si puedes seguir            </div>
+            <div class="conf-footer">
+              <form method="POST" action="../templates/funciones/reportar.php">
+                  <input type="hidden" name="id_post" value='3'>
+                  <button type="submit" class="btn-reportar aling-right" title="Reportar confesion"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-circle-fill" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+                  </svg></button>
+              </form>
+              <a class="comentario aling-left" href="3">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-text-fill" viewBox="0 0 16 16">
+              <path d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM4.5 5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7zm0 2.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7zm0 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4z"/>
+              </svg> 33</a>
+          </div>
+</div>
+</div>
+</div>
+<div class="conf-separador"></div>
+<div class="form-conf" id="escribir">
+  <div class="form-bar com-head noselect">Comenta la confesión <b>@<?=$id_post?></b></div>
+  <form action="" method="post" enctype="multipart/form-data">
+      <div class="form-bar">
+          <label for="edad">Tengo</label>
+          <input type="number" name="edad" id="" require class="input-conf max-input" min="13" max="99"/>
+          <label for="genero">años y soy</label>
+          <select name="genero" id="" require class="input-conf">
+              <option value="2">anonimo</option>
+              <option value="3">mujer</option>
+              <option value="4">hombre</option>
+          </select>
+      </div>
+      <div class="textarea-justify">
+          <textarea class="form-textarea" name="confesion" id="" cols="30" rows="10" maxlength="420" placeholder="¿Cual sera tu comentario?"></textarea>
+      </div>
+      <div class="form-bar">
+      <button type="submit" class="btn-form"> <i class="bi bi-send-fill"></i> Enviar</button>
+      </div>
+    </form>
+</div>
+<div class="conf-separador"></div>
+<div class="container">
+  <div class="bg-com bg-body-mujer">
+    <img src="/assets/images/avatares/mujer.png" class="com-avatar">
+    <div class="cont-com">
+      <p>asd.</p>
+      <div class="com-footer">
+        <span><i class="fa fa-history" aria-hidden="true"></i> 08:05 <b style="float:right;">«19 años»</b></span>
+      </div>
+    </div>
+    <form method="POST" action="">
+      <input type="hidden" name="id_post" value='3'>
+      <button type="submit" class="btn-reportar-com aling-right" title="Reportar comentario"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-circle-fill" viewBox="0 0 16 16">
+      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+    </svg></button>
+  </form>
+  </div>
+  <hr>
+</div>
+</body>
+</html>

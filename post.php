@@ -6,7 +6,7 @@ $dataConf = $config->fetch();
 if ($dataConf['mantenimiento'] != "1") {
 include('./templates/head.php');
 include('./templates/header.php');
-include('./templates/Body-Index.php');
+include('./templates/Body-Post.php');
 include('./templates/footer.php');
 } else {
     echo '';

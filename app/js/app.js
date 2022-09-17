@@ -1,67 +1,3 @@
-/* flag = true;
-$(window).scroll(function() {
-if($(window).scrollTop() + $(window).height() == $(document).height()){
-first = $('#first').val();
-limit = $('#limit').val();
-no_data = true;
-if(flag && no_data){
-    flag = false;
-    $('#loader').show();
-    $.ajax({
-        url : 'ajax.php',
-        dataType: "json",
-        method: 'post',
-        data: {
-           start : first,
-           limit : limit
-        },
-        success: function( data ) {
-            flag = true;
-            $('#loader').hide();
-            if(data.count > 0 ){
-                first = parseInt($('#first').val());
-                limit = parseInt($('#limit').val());
-                $('#first').val( first+limit );
-                $('#timeline-container');
-                $.each(data.content, function(key, value ){
-
-                    if(value.event!=''){
-                    html = '<li class="timeline-item">';
-                    html += '<div class="timeline-badge" data-toggle="popover" data-placement="left" data-trigger="hover" data-content="Mention"><a href="#"></a></div>';
-                    html += '<div class="timeline-panel">';
-                    html += '<div class="timeline-heading">';
-                    html += '<p>This is the new post: </p>';
-                    html += '<div class="timeline-date"><i class="fa fa-calendar-o"></i> '+value.date+'</div>';
-                    html += '</div>';
-                    html += '<div class="timeline-content">';
-                    html += '<p>'+value.post+'</p>';
-                    html += '</div>';
-                    html += '</li>';
-                    }
-
-                    $('#timeline-container').append( html );
-
-                    $('.timeline-item').waypoint({
-                        triggerOnce: true,
-                        offset: '80%',
-                        handler: function() {
-                            jQuery(this).addClass('animated fadeInUp');
-                        }
-                    });
-                });
-            }else{
-                alert('No more data to show');
-                no_data = false;
-            }
-        },
-        error: function( data ){
-            flag = true;
-            $('#loader').hide();
-            no_data = false;
-            alert('Something went wrong, Please contact admin');
-        }
-    });
-}}}); */
 const on = (typeevent, el, callback) => {
   el.addEventListener(typeevent, (e) => callback(e));
 };
@@ -106,24 +42,33 @@ const getMoreData = (desde = 0, total = 10) => {
               $confesiones.append(`<div class="conf-separador"></div>
         <div class="container-conf" id-confesion="${id_conf}">
             <div class="div-confesion-${ifGenero}">
-                <div class="conf-head-${ifGenero}">
+                <div class="conf-head-${ifGenero} noselect">
+                    <a class="confesion-id" href="post?id=${id_conf}">@${id_conf}</a>
                     <div class="conf-edad-h aling-left">
-                        <i class="fa fa-${ifGenero}" aria-hidden="true"></i><span> ${edad} </span>años
+                        <i class="fa fa-${ifGenero}" aria-hidden="true"></i><span> <b>${edad}</b> </span>años
                     </div>
                 </div>
-                <div class="conf-meta">
+                <div class="conf-meta noselect">
                     <i class="fa fa-history" aria-hidden="true"></i> ${time_conf} 
                     <span class="text-flag aling-right" ${ifDisabled}>
-                    <img src="/assets/images/flags/${pais.toLowerCase()}.svg">${pais}
+                    <img src="/assets/images/flags/${pais.toLowerCase()}.svg"> ${pais}
                     </span>
                 </div>
                 <div class="conf-contenido">
                     ${confesion}
                 </div>
-                <form class="conf-footer" method="POST" action="../templates/funciones/reportar.php">
+                <div class="conf-footer noselect">
+                <form method="POST" action="">
                     <input type="hidden" name="id_post" value='${id_conf}'>
-                    <input type="submit" class="text-report aling-right" value="Reportar"/>
+                    <button type="submit" class="btn-reportar aling-right" title="Reportar confesion"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-circle-fill" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+                  </svg></button>
                 </form>
+                <a class="comentario aling-left" href="post?id=${id_conf}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-text-fill" viewBox="0 0 16 16">
+                <path d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM4.5 5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7zm0 2.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7zm0 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4z"/>
+                </svg> Comentar</a>
+                </div>
             </div>
         </div>`);
             }
@@ -147,3 +92,6 @@ on("scroll", window, () => {
   const { scrollHeight, clientHeight, scrollTop } = document.documentElement;
   clientHeight + scrollTop >= scrollHeight && getMoreData((desde += 10));
 });
+if (window.history.replaceState) { // verificamos disponibilidad
+  window.history.replaceState(null, null, window.location.href);
+}

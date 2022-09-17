@@ -1,5 +1,7 @@
 <?php
     require('core/server.php');
+    session_start();
+
 ?>
 <?php
 #Vamos a ver si estan activas las confesiones.
@@ -46,27 +48,68 @@ if ($_SESSION['TengoError'] != true) {
 $_SESSION['TengoError'] = false; 
 $_SESSION['errorID'] = 0; 
 ?>
-
+<div class="t-m1 alert-box">
+    <p class="alert alert-info">En este sitio web no hay filtros puedes publicar lo que quieras. <b>Att: Admin</b></p>
+</div>
 <div class="t-m1 alert-box">
     <p class="alert alert-warning">Estás viendo confesiones de <strong>personas de todo el mundo </strong> 🌎</p>
 </div>
 <div class="container" data-result="confesiones-loader">
-    <div style="text-align: center;">
-        Cargando confesiones... <br>
-        <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
-            <path opacity="0.2" fill="#000" d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946
-    s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634
-    c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z" />
-            <path fill="#000" d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0
-    C22.32,8.481,24.301,9.057,26.013,10.047z">
-                <animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 20 20" to="360 20 20" dur="0.5s" repeatCount="indefinite" />
-            </path>
-        </svg>
-    </div>
+    <div class="loader-container"><div class="loader">Loading...</div></div>
 </div>
 <div class="container" data-result="confesiones">
-    
 </div>
 <div class="container" data-result="no-more-results">
-
 </div>
+<?php
+#SISTEMA DE REPORTAR
+if (isset($_POST['id_post'])) {
+
+    #Validar datos para evitar SQL inject
+    $id_conf = strip_tags($_POST['id_post']);
+
+    #Consultar las confesiones
+    $conf = $conn->query("SELECT * FROM conf_respuestas WHERE id_conf='$id_conf'");
+    $row = $conf->fetch();
+
+    #Datos que necesitaremos
+    $id_actual = $id_conf;
+    $ip_denunciado = $row['ip_user'];
+
+    $ip_actual = $_SERVER["HTTP_CF_CONNECTING_IP"];
+    if (empty($ip_actual)) {
+        $ip_actual = $_SERVER['REMOTE_ADDR'];
+    }
+    $fecha_all = date("Y-m-d", time());
+
+    #Hacemos consulta
+    $consult = $conn->query("SELECT * FROM reportes WHERE id_conf='$id_conf'");
+    $data = $consult->fetch();
+
+    #Validamos que el usuario si ya reporto la confesion no deje hacerlo
+    if ($data['ip_denunciante'] == $ip_actual) {
+        header("Location: ../../index");
+?>
+<?php
+exit();
+    #Validamos que exista el id de la confesión
+    } if (!$id_actual == $row['id_conf']) {
+        echo '';
+?>
+<?php
+exit();
+    #Validamos que no este vacio la casilla id_conf
+    } if ($id_actual == NULL) {
+        echo '';
+?>
+<?php
+exit();
+    } else {
+        #Insertamos la denuncia
+        $enviar = $conn->query("INSERT INTO reportes (id_conf, ip_denunciante, ip_denunciado,fecha) VALUES ('{$id_actual}','{$ip_actual}', '{$ip_denunciado}', '{$fecha_all}')");
+        #Guardado logs
+        $accion = "Se hizo una denuncia con la ip <b>$ip_actual</b> a la confesion id <b>$id_actual</b>";
+        $enviar_log = "INSERT INTO logs_reportes (ip_denunciante,accion,fecha) values ('{$ip_actual}','{$accion}','{$fecha_all}')";
+        $conn->query($enviar_log);
+    ?>
+<?php }}?>
