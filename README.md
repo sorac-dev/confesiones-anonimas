@@ -34,8 +34,5 @@
 - Sistema de comentarios
 
 **Todos los derechos reservados - Realizado por Sorac**
-- Mi instagram -> https://www.instagram.com/soycarlos.co/
-- Mi tiktok -> https://tiktok.com/@soycarlos.co
-- Mi canal de twitch -> https://www.twitch.tv/elsorac_
 - Mi canal de youtube -> https://www.youtube.com/c/sorac
 - Mi servidor discord -> https://discord.gg/V4gq2p6MfR
