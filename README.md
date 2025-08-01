@@ -1,4 +1,4 @@
-# Confesiones anonimas (www.confesiones.cf)
+# Confesiones anonimas
 
 **Conectar confesiones a la base de datos**
 
